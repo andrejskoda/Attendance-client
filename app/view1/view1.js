@@ -10,12 +10,6 @@ angular.module('myApp.view1', ['ngRoute'])
 }])
 
 .controller('View1Ctrl', function($scope) {
-            $scope.days = [
-                {name: 'Ne', date: '01.02.'},
-                {name: 'Po', date: '02.02.'},
-                {name: 'Ut', date: '03.02.'},
-                {name: 'St', date: '04.02.'},
-                {name: 'Št', date: '05.02.'},
-                {name: 'Pi', date: '06.02.'},
-                {name: 'So', date: '07.02.'}];
+            $scope.days = getDaysInMonth(1,2015);
         });
+        

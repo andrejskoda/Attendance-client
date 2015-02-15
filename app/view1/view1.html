@@ -1,7 +1,7 @@
 <div class="col-sm-10">
-    <table class="table">
+    <table class="table table-condensed table-bordered  table-hover" style="font-size: 11px;">
         <thead>
-            <tr >
+            <tr>
                 <th>#</th>
                 <th>Dátum</th>
                 <th>Od</th>
@@ -14,17 +14,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr style="vertical-align: bottom" ng-repeat="day in days" class="text-center {{day.getDay() == 0 || day.getDay() == 6 ? ' danger ':''}}}">
-                <td style="vertical-align: middle">{{day.getDay() | dayOfWeek}}</td>
-                <td style="vertical-align: middle">{{day | date:'dd.MM'}}</td>
-                <td><input placeholder="hh:mm" size="1" class="form-control input-sm" type="time" ngPattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" ng-model="day.from"></td>
-                <td><input placeholder="hh:mm" size="1" class="form-control input-sm" type="time" ngPattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" ng-model="day.to"></td>
-                <td><input placeholder="hh:mm" size="1" class="form-control input-sm" type="text" ng-model="day.lunchFrom"></td>
-                <td><input placeholder="hh:mm" size="1" class="form-control input-sm" type="text" ng-model="day.lunchTo"></td>
-                <td>{{day.test}}</td>
-                <td></td>
-                <td></td>
+            <tr style="vertical-align: bottom;" ng-repeat="day in days" class="text-center {{day.getDay() === 0 || day.getDay() === 6 ? ' danger ':''}}">
+                <td class="col-sm-1" style="vertical-align: middle">{{day.getDay() | dayOfWeek}}</td>
+                <td class="col-sm-1" style="vertical-align: middle">{{day | date:'dd.MM'}}</td>
+                <td class="col-sm-1"><input placeholder="hh:mm"  style="text-align: center; {{day.getDay() === 0 || day.getDay() === 6 ? ' display:none; ':''}}" class="form-control input-xs" type="text" ngPattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" ng-model="day.from"></td>
+                <td class="col-sm-1"><input placeholder="hh:mm"  style="text-align: center; {{day.getDay() === 0 || day.getDay() === 6 ? ' display:none; ':''}}" class="form-control input-xs" type="text" ngPattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" ng-model="day.to"></td>
+                <td class="col-sm-1"><input placeholder="hh:mm"  style="text-align: center; {{day.getDay() === 0 || day.getDay() === 6 ? ' display:none; ':''}}" class="form-control input-xs" type="text" ng-model="day.lunchFrom"></td>
+                <td class="col-sm-1"><input placeholder="hh:mm"  style="text-align: center; {{day.getDay() === 0 || day.getDay() === 6 ? ' display:none; ':''}}" class="form-control input-xs" type="text" ng-model="day.lunchTo"></td>
+                <td class="col-sm-2">{{day.test}}</td>
+                <td class="col-sm-2">
+                    <select class="form-control input-xs" style="{{day.getDay() === 0 || day.getDay() === 6 ? ' display:none; ':''}}">
+                        <option>Bratislava</option>
+                        <option>Viedeň</option>
+                        <option>Home Office</option>
+                        <option>Dovolenka</option>
+                        <option>Náhradné voľno</option>
+                        <option>Lekár</option>
+                        <option>Sprev. člena rodiny</option>
+                        <option>Práceneschopnosť</option>
+                        <option>Služobná cesta</option>
+                        <option>Iné</option>
+                    </select></td>
+                    <td class="col-sm-1"><input type="checkbox" style="{{day.getDay() === 0 || day.getDay() === 6 ? ' display:none; ':''}}"></td>
             </tr>
         </tbody>
     </table>
+    
+   
 </div>

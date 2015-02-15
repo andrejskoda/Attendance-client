@@ -29,6 +29,18 @@
   padding: 0;
 }
 
-th{
+th, td{
     text-align: center;
 }
+
+ .input-xs {
+    height: 22px;
+    padding: 5px 5px;
+    font-size: 10px;
+    line-height: 1.5;
+    border-radius: 3px;
+    }
+ 
+.table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+padding: 2px 5px;
+}    

@@ -34,23 +34,46 @@ function getDaysInMonth(month, year) {
                 var _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
                 return _utc;
             };
+            
+            var parseTime = function(text){
+                var array = text.split(':');
+                if(array.length === 2){
+                    try{
+                        var hours = Number(array[0]);
+                        var minutes = Number(array[1]);
+                        if(hours >=0 && hours <=23 && minutes >=0 && minutes <=59){
+                            var d= new Date();
+                            d.setHours(text.split(':')[0]);
+                            d.setMinutes(text.split(':')[1]);
+                            return d;
+                        }else{
+                            return null;
+                        }
+                    }catch(err){
+                        return null;
+                    }
+                    
+                }
+                else{
+                    return null;
+                }
+            };
+            
+            var from = parseTime(stringFrom);
+            var to = parseTime(stringTo);
 
-            
-            var from = new Date(calendarDate);
-            from.setHours(stringFrom.split(':')[0]);
-            from.setMinutes(stringFrom.split(':')[1]);
-            
-            var to = new Date(calendarDate);
-            to.setHours(stringTo.split(':')[0]);
-            to.setMinutes(stringTo.split(':')[1]);
-            
-            var elapsed= to.getTime() - from.getTime();
-            var localDate =  new Date(elapsed);
-            return toUTCDate(localDate);
-        }
+            if(from !== null && to !== null){
+                var elapsed= to.getTime() - from.getTime();
+                var localDate =  new Date(elapsed);
+                return toUTCDate(localDate);
+            }else {
+                return null;
+            }
+        };
         days.push(day);
         
         calendarDate.setDate(calendarDate.getDate() + 1);
     }
     return days;
+
 }

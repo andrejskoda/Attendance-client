@@ -6,7 +6,8 @@ angular.module('myApp', [
   'myApp.attendance',
   'myApp.view2',
   'myApp.version',
-  'customFilters'
+  'customFilters',
+  'directives'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/attendance'});

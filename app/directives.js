@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var app = angular.module('directives', []);
+var app = angular.module('myApp.directives', []);
 
 var INTEGER_REGEXP = /^\-?\d+$/;
-app.directive('time', function() {
+app.directive('integer', function() {
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
-      ctrl.$validators.time = function(modelValue, viewValue) {
+      ctrl.$validators.integer = function(modelValue, viewValue) {
         if (ctrl.$isEmpty(modelValue)) {
           // consider empty models to be valid
           return true;

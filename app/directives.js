@@ -1,23 +1,17 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 var app = angular.module('myApp.directives', []);
 
-var INTEGER_REGEXP = /^\-?\d+$/;
-app.directive('integer', function() {
+var TIME_REGEXP = /(\b[01]\d|2[0-3]):([0-5]\d\b)/;
+app.directive('time', function() {
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
-      ctrl.$validators.integer = function(modelValue, viewValue) {
+      ctrl.$validators.time = function(modelValue, viewValue) {
         if (ctrl.$isEmpty(modelValue)) {
-          // consider empty models to be valid
           return true;
         }
 
-        if (INTEGER_REGEXP.test(viewValue)) {
-          // it is valid
+        if (TIME_REGEXP.test(viewValue)) {
           return true;
         }
 

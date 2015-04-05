@@ -1,13 +1,11 @@
 <div class="col-sm-10">
-    <form>
-    <div>
-    Size (integer 0 - 10):
-    <span ng-show="form.size.$error.integer">The value is not a valid integer!</span>
-    <span ng-show="form.size.$error.min || form.size.$error.max">
-      The value must be in range 0 to 10!</span>
-    <input type="number" ng-model="size" name="size"
-           min="0" max="10" integer />{{size}}<br />
-  </div>
+    
+    <form name="myForm" novalidate class="css-form" >
+        User name: <input type="text" name="userName" ng-model="shit" required time class="form-control">
+        <span class="error" ng-show="myForm.userName.$error.required">
+            Required!</span><br>
+        <span class="error" ng-show="myForm.userName.$error.time">
+            {{myForm.userName.$viewValue}} Must be time!</span><br>
     </form>
     <table class="table table-condensed table-bordered  table-hover" style="font-size: 11px;">
         <thead>
@@ -27,8 +25,8 @@
             <tr style="vertical-align: bottom;" ng-repeat="day in days" class="text-center {{day.isWeekend ? ' danger ':''}}">
                 <td class="col-sm-1" style="vertical-align: middle">{{day.date.getDay() | dayOfWeek}}</td>
                 <td class="col-sm-1" style="vertical-align: middle">{{day.date | date:'dd.MM'}}</td>
-                <td class="col-sm-1"><input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ngPattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" ng-model="day.from"></td>
-                <td class="col-sm-1"><input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ngPattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" ng-model="day.to"></td>
+                <td class="col-sm-1"><input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.from"></td>
+                <td class="col-sm-1"><input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.to"></td>
                 <td class="col-sm-1"><input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.lunchFrom"></td>
                 <td class="col-sm-1"><input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.lunchTo"></td>
                 <td class="col-sm-2" style="vertical-align: middle;"><div ng-if="!day.isWeekend">{{day.workTime(day.from,day.to) |date:'HH:mm'}}</div></td>

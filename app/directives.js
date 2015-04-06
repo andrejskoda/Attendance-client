@@ -12,9 +12,10 @@ app.directive('time', function() {
         }
 
         if (TIME_REGEXP.test(viewValue)) {
+            console.log('is valid.');
           return true;
         }
-
+        console.log('not valid.');
         // it is invalid
         return false;
       };

@@ -37,6 +37,7 @@ function getDaysInMonth(month, year) {
             };
             
             var parseTime = function(text){
+                if(text === undefined) return null;
                 var array = text.split(':');
                 if(array.length === 2){
                     try{

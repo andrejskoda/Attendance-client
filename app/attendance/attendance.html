@@ -41,8 +41,9 @@
                     <input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.lunchTo">
                 </td>
                 <td class="col-sm-2" style="vertical-align: middle;">
-                    
-                    <div ng-if="!day.isWeekend ">{{day.workTime(day.from,day.to) |date:'HH:mm'}}</div>
+                    <div ng-show="!{{'myForm.dayFrom'+$index}}.$invalid">
+                        {{day.workTime(day.from,day.to) |date:'HH:mm'}}
+                    </div>
                 </td>
                 <td class="col-sm-2">
                     <select class="form-control input-xs" ng-if="!day.isWeekend">

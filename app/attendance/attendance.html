@@ -32,13 +32,13 @@
                     <input name="dayFrom{{$index}}" ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.from" time>
                 </td>
                 <td class="col-sm-1 form-group" ng-class="{'has-error': {{'myForm.dayTo'+$index}}.$invalid}">
-                    <input name="dayTo{{$index}}"  ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.to" time>
+                    <input name="dayTo{{$index}}" ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.to" time>
                 </td>
-                <td class="col-sm-1">
-                    <input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.lunchFrom">
+                <td class="col-sm-1 form-group" ng-class="{'has-error': {{'myForm.lunchFrom'+$index}}.$invalid}">
+                    <input name="lunchFrom{{$index}}" ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.lunchFrom" time>
                 </td>
-                <td class="col-sm-1">
-                    <input ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.lunchTo">
+                <td class="col-sm-1 form-group" ng-class="{'has-error': {{'myForm.lunchTo'+$index}}.$invalid}">
+                    <input name="lunchTo{{$index}}" ng-if="!day.isWeekend" placeholder="hh:mm"  style="text-align: center;" class="form-control input-xs" type="text" ng-model="day.lunchTo" time>
                 </td>
                 <td class="col-sm-2" style="vertical-align: middle;">
                     <div ng-show="!{{'myForm.dayFrom'+$index}}.$invalid">

@@ -30,7 +30,7 @@ function getDaysInMonth(month, year) {
         day.isWeekend = calendarDate.getDay() === 0 || calendarDate.getDay() === 6;
         day.from='09:00';
         day.to='17:00';
-        day.workTime= function(stringFrom, stringTo){
+        day.workTime= function(stringFrom, stringTo, lunchFrom, lunchTo){
             var toUTCDate = function (date) {
                 var _utc = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
                 return _utc;
@@ -63,10 +63,20 @@ function getDaysInMonth(month, year) {
             
             var from = parseTime(stringFrom);
             var to = parseTime(stringTo);
+            
+            var lunchFrom = parseTime(lunchFrom);
+            var lunchTo = parseTime(lunchTo);
 
             if(from !== null && to !== null){
                 var elapsed= to.getTime() - from.getTime();
                 var localDate =  new Date(elapsed);
+                
+                if(lunchFrom !== null && lunchTo !== null){
+                    var lunchElapsed= lunchTo.getTime() - lunchFrom.getTime();
+                    var totalLocalDate = new Date(elapsed-lunchElapsed);
+                    return toUTCDate(totalLocalDate);
+                }
+                
                 return toUTCDate(localDate);
             }else {
                 return null;

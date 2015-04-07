@@ -42,7 +42,7 @@
                 </td>
                 <td class="col-sm-2" style="vertical-align: middle;">
                     <div ng-show="!{{'myForm.dayFrom'+$index}}.$invalid">
-                        {{day.workTime(day.from,day.to) |date:'HH:mm'}}
+                        {{day.workTime(day.from, day.to, day.lunchFrom, day.lunchTo) |date:'HH:mm'}}
                     </div>
                 </td>
                 <td class="col-sm-2">

@@ -4,7 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.attendance',
-  'myApp.view2',
+  'myApp.overview',
   'myApp.version',
   'customFilters',  
   'myApp.directives'

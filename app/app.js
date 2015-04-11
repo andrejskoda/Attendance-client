@@ -11,8 +11,12 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/attendance'});
-}]);
-
+}])
+    .controller('RootCtrl', function($scope,$location){
+        $scope.isActive = function(viewLocation){
+          return viewLocation === $location.path();  
+        };
+    } );
 
 /**
  * @param {int} The month number, 0 based

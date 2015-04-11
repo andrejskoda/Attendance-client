@@ -44,3 +44,5 @@ th, td{
 .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
 padding: 2px 5px;
 }    
+
+.top-buffer { margin-top:20px; }

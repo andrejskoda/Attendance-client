@@ -27,7 +27,7 @@ function getDaysInMonth(month, year) {
     // Since no month has fewer than 28 days
     var calendarDate = new Date(year, month, 1);
     var days = [];
-    console.log('month', month, 'date.getMonth()', calendarDate.getMonth());
+    console.log('month', month, 'year', year);
     while (calendarDate.getMonth() === month) {
         var day = {};
         day.date = new Date(calendarDate);
@@ -90,6 +90,7 @@ function getDaysInMonth(month, year) {
         
         calendarDate.setDate(calendarDate.getDate() + 1);
     }
+    console.log('returning days', days);
     return days;
 
 }

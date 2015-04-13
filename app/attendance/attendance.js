@@ -1,15 +1,29 @@
 'use strict';
 
-angular.module('myApp.attendance', ['ngRoute'])
+var attendance = angular.module('myApp.attendance', ['ngRoute']);
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/attendance', {
-    templateUrl: 'attendance/attendance.html',
-    controller: 'AttendanceCtrl'
-  });
-}])
+attendance.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+    when('/attendance', {
+        templateUrl: 'attendance/attendance.html',
+        controller: 'AttendanceCtrl'
+    }).
+    when('/attendance/:month/:year', {
+        templateUrl: 'attendance/attendance.html',
+        controller: 'AttendanceNewCtrl'
+    });
+}]);
 
-.controller('AttendanceCtrl', function($scope) {
-            $scope.days = getDaysInMonth(1,2015);
-        });
+attendance.controller('AttendanceCtrl', function($scope) {
+    $scope.month=4;
+    $scope.year=2015;
+    $scope.days = getDaysInMonth($scope.month,$scope.year);
+});
         
+attendance.controller('AttendanceNewCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+    $scope.month = $routeParams.month;
+    $scope.year = $routeParams.year;
+    $scope.days = getDaysInMonth($scope.month,$scope.year);
+  }]
+);

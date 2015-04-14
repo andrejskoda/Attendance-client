@@ -25,9 +25,9 @@ config(['$routeProvider', function($routeProvider) {
  */
 function getDaysInMonth(month, year) {
     // Since no month has fewer than 28 days
-    var calendarDate = new Date(year, month, 1);
+    var calendarDate = new Date(year, month,1);
     var days = [];
-    console.log('month', month, 'year', year);
+    console.log('month', month, 'year', year, 'calendarDate',calendarDate);
     while (calendarDate.getMonth() === month) {
         var day = {};
         day.date = new Date(calendarDate);

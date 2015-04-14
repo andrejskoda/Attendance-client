@@ -24,6 +24,6 @@ attendance.controller('AttendanceNewCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
     $scope.month = $routeParams.month;
     $scope.year = $routeParams.year;
-    $scope.days = getDaysInMonth($scope.month,$scope.year);
+    $scope.days = getDaysInMonth($scope.month-1,$scope.year);
   }]
 );

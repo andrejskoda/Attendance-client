@@ -10,11 +10,18 @@ angular.module('myApp', [
   'myApp.directives'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/attendance'});
+  $routeProvider
+          .when('/user/new',{
+              controller: 'NewUserCtrl',
+              templateURL: '/users/new.html'
+          })
+          .otherwise({redirectTo: '/attendance'});
 }])
     .controller('RootCtrl', function($scope,$location){
         $scope.isActive = function(viewLocation){
-          return viewLocation === $location.path();  
+            console.log('$$$ path:'+$location.path());
+//          return viewLocation === $location.path();
+            return $location.path().indexOf(viewLocation) ===0;
         };
     } );
 

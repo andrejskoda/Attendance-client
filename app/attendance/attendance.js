@@ -20,10 +20,14 @@ attendance.controller('AttendanceCtrl', function($scope) {
     $scope.days = getDaysInMonth($scope.month,$scope.year);
 });
         
-attendance.controller('AttendanceNewCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
+attendance.controller('AttendanceNewCtrl', ['$scope', '$routeParams','$location',
+  function($scope, $routeParams, $location) {
     $scope.month = $routeParams.month;
     $scope.year = $routeParams.year;
     $scope.days = getDaysInMonth($scope.month-1,$scope.year);
+    $scope.go = function(month,year){
+        console.log('method go called')
+        $location.path('/attendance/'+month+'/'+year);
+    };
   }]
 );

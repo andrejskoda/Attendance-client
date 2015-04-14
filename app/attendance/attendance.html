@@ -6,7 +6,7 @@
             <div class="form-group">
                 <a href="#"><span class="glyphicon glyphicon-arrow-left"></span></a>
                 <label class="sr-only" for="month">Month</label>
-                <select name="month" id="month" onchange="" size="1" class="form-control input-xs" ng-model="month" ng-change="update()">
+                <select name="month" id="month" onchange="" size="1" class="form-control input-xs" ng-model="month" ng-change="go(month,year)">
                     <option value="1">Január</option>
                     <option value="2">Február</option>
                     <option value="3">Marec</option>
@@ -23,11 +23,11 @@
             </div>
             <div class="form-group">
                 <label class="sr-only" for="year">Year</label>
-                <select name="year" id="year" onchange="" size="1" class="form-control input-xs" ng-model="year">
+                <select name="year" id="year" onchange="" size="1" class="form-control input-xs" ng-model="year" ng-change="go(month,year)">
                     <option value="2015">2015</option>
                     <option value="2014">2014</option>
                     <option value="2013">2013</option>
-                    <option value="2013">2012</option>
+                    <option value="2012">2012</option>
                 </select>
                 <a href="#"><span class="glyphicon glyphicon-arrow-right"></span></a>
             </div>

@@ -15,12 +15,10 @@ config(['$routeProvider', function($routeProvider) {
               controller: 'NewUserCtrl',
               templateURL: '/users/new.html'
           })
-          .otherwise({redirectTo: '/attendance'});
+          .otherwise({redirectTo: '/attendance/'+(new Date().getMonth()+1)+'/'+(new Date().getFullYear())});
 }])
     .controller('RootCtrl', function($scope,$location){
         $scope.isActive = function(viewLocation){
-            console.log('$$$ path:'+$location.path());
-//          return viewLocation === $location.path();
             return $location.path().indexOf(viewLocation) ===0;
         };
     } );

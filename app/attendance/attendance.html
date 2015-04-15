@@ -4,7 +4,7 @@
 
         <form class="form-inline">
             <div class="form-group">
-                <a href="#"><span class="glyphicon glyphicon-arrow-left"></span></a>
+                <a  ng-click="goBackOneMonth()"><span class="glyphicon glyphicon-arrow-left"></span></a>
                 <label class="sr-only" for="month">Month</label>
                 <select name="month" id="month" onchange="" size="1" class="form-control input-xs" ng-model="month" ng-change="go(month,year)">
                     <option value="1">Január</option>
@@ -29,7 +29,7 @@
                     <option value="2013">2013</option>
                     <option value="2012">2012</option>
                 </select>
-                <a href="#"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                <a  ng-click="goForwardOneMonth()"><span class="glyphicon glyphicon-arrow-right"></span></a>
             </div>
         </form>
     </div>

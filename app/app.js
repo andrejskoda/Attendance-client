@@ -3,21 +3,24 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
+  'ngResource',
   'myApp.attendance',
   'myApp.overview',
   'myApp.version',
   'customFilters',  
   'myApp.directives'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider
+])
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider
           .when('/user/new',{
               controller: 'NewUserCtrl',
               templateURL: '/users/new.html'
           })
           .otherwise({redirectTo: '/attendance/'+(new Date().getMonth()+1)+'/'+(new Date().getFullYear())});
-}])
+    }])
     .controller('RootCtrl', function($scope,$location){
+        $scope.thisMonth = (new Date().getMonth())+1;
+        $scope.thisYear = (new Date().getFullYear());
         $scope.isActive = function(viewLocation){
             return $location.path().indexOf(viewLocation) ===0;
         };

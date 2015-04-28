@@ -1,16 +1,16 @@
 'use strict';
 
-var attendance = angular.module('myApp.attendance', ['ngRoute']);
+var attendance = angular.module('myApp.attendance', ['ngRoute','ngResource']);
 
 attendance.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
     when('/attendance/:month/:year', {
         templateUrl: 'attendance/attendance.html',
-        controller: 'AttendanceNewCtrl'
+        controller: 'AttendanceCtrl'
     });
 }]);
         
-attendance.controller('AttendanceNewCtrl', ['$scope', '$routeParams','$location',
+attendance.controller('AttendanceCtrl', ['$scope', '$routeParams','$location',
   function($scope, $routeParams, $location) {
     $scope.month = $routeParams.month;
     $scope.year = $routeParams.year;

@@ -1,5 +1,17 @@
-var users = angular.module('myApp.users');
+'use strict';
 
-users.controller('NewUserCtrl', function($scope, User, $location){
-    
-});
+var user = angular.module('myApp.user',['myApp','ngRoute','ngResource']);
+
+user.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+    when('/users/', {
+        templateUrl: 'users/users.html',
+        controller: 'UserListCtrl'
+    });
+}]);
+
+user.controller('UserListCtrl', ['$scope', 'User',
+  function($scope, User) {
+    $scope.temp = function(){console.log('running')};
+    $scope.users = User.query();
+  }]);

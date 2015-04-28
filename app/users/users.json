@@ -1,3 +1,12 @@
-{
-    
-}
+[
+    {
+        "id": "fero_hora",
+        "firstName": "Fero",
+        "lastName": "Hora"
+    },
+    {
+        "id": "pista_lakatos",
+        "firstName": "Pišta",
+        "lastName": "Lakatoš"
+    }
+]

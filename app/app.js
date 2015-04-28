@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'ngResource',
   'myApp.attendance',
+  'myApp.user',
   'myApp.overview',
   'myApp.version',
   'customFilters',  
@@ -12,10 +13,7 @@ angular.module('myApp', [
 ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
-          .when('/user/new',{
-              controller: 'NewUserCtrl',
-              templateURL: '/users/new.html'
-          })
+          
           .otherwise({redirectTo: '/attendance/'+(new Date().getMonth()+1)+'/'+(new Date().getFullYear())});
     }])
     .controller('RootCtrl', function($scope,$location){
@@ -24,7 +22,12 @@ angular.module('myApp', [
         $scope.isActive = function(viewLocation){
             return $location.path().indexOf(viewLocation) ===0;
         };
-    } );
+    } )
+    .factory('User', ['$resource', function ($resource){
+           return $resource('users/:userId.json', {},{
+               query: {method:'GET', params:{userId:'users'}, isArray:true}
+            });
+        }]);
 
 /**
  * @param {int} The month number, 0 based

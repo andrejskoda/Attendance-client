@@ -10,8 +10,17 @@ user.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
-user.controller('UserListCtrl', ['$scope', 'User',
-  function($scope, User) {
-    $scope.temp = function(){console.log('running')};
+user.controller('UserListCtrl', ['$scope', 'User', '$location',
+  function($scope, User, $location) {
     $scope.users = User.query();
+    $scope.fields = ['firstName', 'lastName'];
+    $scope.sort = function(field){
+      $scope.sort.field = field;
+      $scope.sort.order = !$scope.sort.order;
+    };
+    $scope.sort.field= 'firstName';
+    $scope.sort.order = false;
+    $scope.show = function(id){
+        $location.url('/user/' + id);
+    };
   }]);

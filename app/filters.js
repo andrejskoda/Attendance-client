@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('customFilters', []).filter('dayOfWeek', function () {
+var filters =  angular.module('customFilters', []);
+
+filters.filter('dayOfWeek', function () {
     return function (input) {
         if      (input === 0) return 'Ne';
         else if (input === 1) return 'Po';

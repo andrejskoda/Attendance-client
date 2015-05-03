@@ -7,7 +7,16 @@ user.config(['$routeProvider', function($routeProvider) {
     when('/users/', {
         templateUrl: 'users/users.html',
         controller: 'UserListCtrl'
+    })
+    .when('/user/:id', {
+        templateUrl: 'users/new.html',
+        controller: 'UserListCtr'
+    })
+    .when('/user/new',{
+        templateUrl: 'users/new.html',
+        controller: 'NewUserCtrl'
     });
+    
 }]);
 
 user.controller('UserListCtrl', ['$scope', 'User', '$location',
@@ -24,3 +33,26 @@ user.controller('UserListCtrl', ['$scope', 'User', '$location',
         $location.url('/user/' + id);
     };
   }]);
+  
+user.controller('NewUserCtrl',['$scope', 'User', '$location',
+    function($scope, User, $location){
+        $scope.contact = new Contact({
+            firstName: ['', 'text'],
+            lastName: ['', 'text'],
+            email: ['', 'email'],
+            phone: ['','tel'],
+            birthday: ['', 'date'],
+            address: ['', 'text']
+        });
+        $scope.save = function(){
+          if($scope.newUser.$invalid){
+              $scope.$broadcast('record:invalid');
+              $scope.contact.$save();
+              $location.url('/users');
+          }else{
+              
+          }
+        };
+    
+    }
+]);
